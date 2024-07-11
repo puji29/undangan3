@@ -1,7 +1,26 @@
+body {
+  overflow-x: hidden;
+}
 h1 {
-    font-family: "Great Vibes", cursive;
+  font-family: "Great Vibes", cursive;
 }
 
-h2, p {
-    font-family: "Montserrat", sans-serif;
+h2,
+p {
+  font-family: "Montserrat", sans-serif;
+}
+
+@keyframes fadeLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.fade-left {
+  animation: fadeLeft 0.8s ease forwards;
 }

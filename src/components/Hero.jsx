@@ -3,6 +3,11 @@ import { BsCalendarCheck } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import ModalRsvp from "./ModalRsvp";
 import Navbar from "./Navbar";
+import Quotes from "./Quotes";
+import Couple from "./Couple";
+import Story from "./Story";
+import Galery from "./Galery";
+import Rsvp from "./Rsvp";
 function Hero() {
   let token = localStorage.getItem("token");
   const [showModal, setShowModal] = useState(false);
@@ -38,7 +43,7 @@ function Hero() {
 
 
   return (
-      
+      <div className="">
       <div className="w-screen bg-[url('./public/img/bg1.jpg')] h-screen bg-cover bg-center content-center text-white ">
         <Navbar  />
       <div className="text-center mx-auto mt-20">
@@ -87,6 +92,12 @@ function Hero() {
           </div>
         </ModalRsvp>
       </div>
+    </div>
+    <Quotes />
+    <Couple />
+    <Story />
+    <Galery />
+    <Rsvp />
     </div>
   );
 }
