@@ -1,5 +1,8 @@
-function ModalRsvp({ isVisible, onClose, children }) {
-  if (!isVisible) return null;
+
+
+function ModalUcapan({ isVisible, onClose, children }) {
+ 
+    if (!isVisible) return null;
 
   const handleClose = (e) => {
     if (e.target.id === "wrapper") onClose();
@@ -20,7 +23,7 @@ function ModalRsvp({ isVisible, onClose, children }) {
         <div className="bg-white p-2 rounded">{children}</div>
       </div>
     </div>
-  );
+  )
 }
 
-export default ModalRsvp;
+export default ModalUcapan

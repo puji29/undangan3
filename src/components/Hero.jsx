@@ -8,6 +8,10 @@ import Couple from "./Couple";
 import Story from "./Story";
 import Galery from "./Galery";
 import Rsvp from "./Rsvp";
+import Maps from "./Maps";
+import Ucapan from "./Ucapan"
+import Gifts from "./Gifts";
+import Footer from "./Footer";
 function Hero() {
   let token = localStorage.getItem("token");
   const [showModal, setShowModal] = useState(false);
@@ -98,6 +102,11 @@ function Hero() {
     <Story />
     <Galery />
     <Rsvp />
+    <Maps />
+    <Ucapan />
+    <Gifts />
+    <Footer />
+
     </div>
   );
 }

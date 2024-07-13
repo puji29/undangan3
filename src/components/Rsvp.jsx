@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import Akad from "./Akad";
 import Resepsi from "./Resepsi";
-import Maps from "./Maps";
-import Ucapan from "./Ucapan";
+
 
 function Rsvp() {
   const [showAkad, setShowAkad] = useState(true);
@@ -42,14 +41,14 @@ function Rsvp() {
   };
 
   return (
-    <div className="max-h-screen mx-auto content-center text-center py-10 ">
+    <div className="max-h-screen mx-auto content-center text-center py-4 ">
       <h1 className="text-[25px] py-2">Informasi Acara</h1>
       <div className="rounded-lg shadow-lg bg-gray-400 mr-2 ml-2">
         <div className="grid grid-cols-2">
           <div className="py-2 mt-2">
             <button
               onClick={handleButton1}
-              className=" bg-black rounded-md text-white py-1 px-20"
+              className=" bg-black rounded-md text-white py-1 px-10 md:px-20"
             >
               Akad
             </button>
@@ -57,7 +56,7 @@ function Rsvp() {
           <div className="py-2 mt-2">
             <button
               onClick={handleButton2}
-              className=" bg-black rounded-md text-white py-1 px-20"
+              className=" bg-black rounded-md text-white py-1 px-10 md:px-20"
             >
               Resepsi
             </button>
@@ -75,8 +74,8 @@ function Rsvp() {
           {showRespsi ? <Resepsi /> : null}
         </div>
       </div>
-      <Maps />
-      <Ucapan />
+      
+      
     </div>
   );
 }

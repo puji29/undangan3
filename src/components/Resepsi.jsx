@@ -1,4 +1,4 @@
-
+import { MdDateRange } from "react-icons/md";
 function Resepsi() {
   return (
     <>
@@ -17,8 +17,8 @@ function Resepsi() {
         Jl. Bend. Sengguruh No.32, Sumbersari, Kec. Lowokwaru, Kota Malang, Jawa
         Timur 65145
       </p>
-      <button className="fade-left border rounded-lg py-1 px-20 hover:bg-white cursor-pointer shadow-lg mb-2">
-        Simpan tanggal
+      <button className="fade-left border rounded-lg flex mx-auto py-1 px-20 hover:bg-white cursor-pointer shadow-lg mb-2">
+      <MdDateRange className="mr-1 mt-1" />Simpan tanggal
       </button>
     </>
   );
