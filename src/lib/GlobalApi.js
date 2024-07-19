@@ -1,0 +1,29 @@
+import axios from "axios";
+
+const axiosClient = axios.create({
+    baseURL : 'http://localhost:8000/api'
+})
+
+const getReservasi =() => axiosClient.get('/reservasis')
+
+const addReservasi = (dataRsvp) => axiosClient.post('/reservasis', dataRsvp)
+
+const getUcapans = () => axiosClient.get('/ucapans')
+
+const addUcapan = (data) => axiosClient.post('/ucapans',data)
+
+const getReservasiById = (id)=> axiosClient.get('/reservasis/'+id)
+
+const updateReservasi = (id,data)=> axiosClient.put('/reservasis/'+id,data)
+
+const deleteReservasi = (id)=> axiosClient.delete('/reservasis/'+id)
+
+export default{
+    getReservasi,
+    addReservasi,
+    getUcapans,
+    addUcapan,
+    getReservasiById,
+    updateReservasi,
+    deleteReservasi
+}

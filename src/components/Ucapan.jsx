@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import moment from "moment";
 import ModalUcapan from "./ModalUcapan";
 import { FaPenFancy } from "react-icons/fa";
+import GlobalApi from "../lib/GlobalApi";
 function Ucapan() {
   const [name, setName] = useState("");
   const [pesan, setPesan] = useState("");
   const [showModal, setShowModal] = useState(false);
+  const [ucapanList,setUcapanList]= useState([])
 
   const handleName = (e) => {
     setName(e.target.value);
@@ -14,85 +17,62 @@ function Ucapan() {
     setPesan(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    console.log(name);
-    console.log(pesan);
+    
+    
+    const dataUcapan = {
+      name: name,
+      ucapan: pesan,
+    }
+
+    try {
+      const res = await GlobalApi.addUcapan(dataUcapan)
+      console.log(res.data)
+
+      setUcapanList([...ucapanList, res.data.data]);
+
+      setName("")
+      setPesan("")
+      setShowModal(false)
+    } catch (error) {
+      console.log(error)
+    }
   };
+
+  useEffect(()=>{
+    getUcapan()
+  },[])
+
+  const getUcapan = async () =>{
+    await GlobalApi.getUcapans().then((res)=>{
+      setUcapanList(res.data.data.data)
+      console.log(res.data)
+    })
+  }
 
   return (
     <div className="py-6 mb-4 mt-8 text-center">
       <h1 className="text-[25px]">Pesan & Ucapan</h1>
       <div className="h-[380px] border rounded-lg mr-2 ml-2 py-2 mx-auto overflow-y-scroll ">
         <div className="w-100 h-40 scrollbar-thin scrollbar-webkit py-2">
-           <div className="rounded-lg shadow-lg bg-white mr-2 ml-2 py-2 mb-2">
-            <div className="grid grid-cols-2">
-              <div className="">
-                <h2 className="text-start ml-3 py-2">From: Puji</h2>
+          {ucapanList.map((ucapan,index) =>(
+           // eslint-disable-next-line react/jsx-key
+           <div key={index} className="rounded-lg shadow-lg bg-white mr-2 ml-2 py-2 mb-2">
+            <div className="grid grid-cols-2" >
+              <div className="" >
+                <h2 className="text-start ml-3 py-2">From: { ucapan.name }</h2>
               </div>
               <div className="">
-                <h2 className="text-end mr-3 py-2">juni 29, 2024 </h2>
-              </div>
-            </div>
-            <p className="text-start ml-3">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. A,
-              cupiditate.
-            </p>
-          </div>{" "} <div className="rounded-lg shadow-lg bg-white mr-2 ml-2 py-2 mb-2">
-            <div className="grid grid-cols-2">
-              <div className="">
-                <h2 className="text-start ml-3 py-2">From: Puji</h2>
-              </div>
-              <div className="">
-                <h2 className="text-end mr-3 py-2">juni 29, 2024 </h2>
+                <h2 className="text-end mr-3 py-2">{moment(ucapan.created_at).format('DD MMMM YYYY')}</h2>
               </div>
             </div>
             <p className="text-start ml-3">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. A,
-              cupiditate.
+             {ucapan.ucapan}
             </p>
-          </div>{" "} <div className="rounded-lg shadow-lg bg-white mr-2 ml-2 py-2 mb-2">
-            <div className="grid grid-cols-2">
-              <div className="">
-                <h2 className="text-start ml-3 py-2">From: Puji</h2>
-              </div>
-              <div className="">
-                <h2 className="text-end mr-3 py-2">juni 29, 2024 </h2>
-              </div>
-            </div>
-            <p className="text-start ml-3">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. A,
-              cupiditate.
-            </p>
-          </div>{" "}
-          <div className="rounded-lg shadow-lg bg-white mr-2 ml-2 py-2 mb-2">
-            <div className="grid grid-cols-2">
-              <div className="">
-                <h2 className="text-start ml-3 py-2">From: Puji</h2>
-              </div>
-              <div className="">
-                <h2 className="text-end mr-3 py-2">juni 29, 2024 </h2>
-              </div>
-            </div>
-            <p className="text-start ml-3">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. A,
-              cupiditate.
-            </p>
-          </div>{" "}
-          <div className="rounded-lg shadow-lg bg-white mr-2 ml-2 py-2 mb-2">
-            <div className="grid grid-cols-2">
-              <div className="">
-                <h2 className="text-start ml-3 py-2">From: Puji</h2>
-              </div>
-              <div className="">
-                <h2 className="text-end mr-3 py-2">juni 29, 2024 </h2>
-              </div>
-            </div>
-            <p className="text-start ml-3">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. A,
-              cupiditate.
-            </p>
-          </div>{" "}
+          </div>
+          ))}
+          
         </div>
       </div>
         <div className="py-2">

@@ -10,6 +10,10 @@ p {
   font-family: "Montserrat", sans-serif;
 }
 
+.iconMusic {
+  mix-blend-mode: difference;
+}
+
 @keyframes fadeLeft {
   0% {
     opacity: 0;
