@@ -1,12 +1,14 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import './App.css'
-import Welcome from './components/Welcome'
-import Hero from './components/Hero'
-import { useEffect } from 'react';
-import Dashboard from './components/Admin/Dashboard';
-import FormEditRsvp from './components/Admin/FormEditRsvp';
-import TableReservasi from './components/Admin/TableReservasi';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "./App.css";
+import Welcome from "./components/Welcome";
+import Hero from "./components/Hero";
+import { useEffect } from "react";
+import Dashboard from "./components/Admin/Dashboard";
+import FormEditRsvp from "./components/Admin/FormEditRsvp";
+import TableReservasi from "./components/Admin/TableReservasi";
 
+import TableUcapan from "./components/Admin/TableUcapan";
+import FormEditUcapan from "./components/Admin/FormEditUcapan";
 
 function App() {
   useEffect(() => {
@@ -25,20 +27,19 @@ function App() {
 
   return (
     <>
-     <Router>
-      <Routes>
-       
-
-        <Route path='/' exact Component={Welcome} />
-        <Route path='/hero' Component={Hero} />
-        <Route path='/admin' Component={Dashboard} />
-        <Route path='/edit/:id' Component={FormEditRsvp} />
-        <Route path='/reservasi' Component={TableReservasi} />
-        
-      </Routes>
-     </Router>
+      <Router>
+        <Routes>
+          <Route path="/" exact Component={Welcome} />
+          <Route path="/hero" Component={Hero} />
+          <Route path="/admin" Component={Dashboard} />
+          <Route path="/edit/:id" Component={FormEditRsvp} />
+          <Route path="/reservasi" Component={TableReservasi} />
+          <Route path="/ucapan" Component={TableUcapan} />
+          <Route path="/ucapan/edit/:id" Component={FormEditUcapan} />
+        </Routes>
+      </Router>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

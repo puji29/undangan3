@@ -8,15 +8,23 @@ const getReservasi =() => axiosClient.get('/reservasis')
 
 const addReservasi = (dataRsvp) => axiosClient.post('/reservasis', dataRsvp)
 
-const getUcapans = () => axiosClient.get('/ucapans')
-
-const addUcapan = (data) => axiosClient.post('/ucapans',data)
-
 const getReservasiById = (id)=> axiosClient.get('/reservasis/'+id)
 
 const updateReservasi = (id,data)=> axiosClient.put('/reservasis/'+id,data)
 
 const deleteReservasi = (id)=> axiosClient.delete('/reservasis/'+id)
+
+const getPageRsvp = (page)=> axiosClient.get('/reservasi?'+page)
+
+const getUcapans = () => axiosClient.get('/ucapans')
+
+const addUcapan = (data) => axiosClient.post('/ucapans',data)
+
+const getUcapanById = (id)=> axiosClient.get('/ucapans/'+id)
+
+const updateUcapan = (id,data)=> axiosClient.put('/ucapans/'+id,data)
+
+const deleteUcapan = (id)=> axiosClient.delete('/ucapans/'+id)
 
 export default{
     getReservasi,
@@ -24,6 +32,10 @@ export default{
     getUcapans,
     addUcapan,
     getReservasiById,
+    getPageRsvp,
     updateReservasi,
-    deleteReservasi
+    deleteReservasi,
+    getUcapanById,
+    updateUcapan,
+    deleteUcapan
 }

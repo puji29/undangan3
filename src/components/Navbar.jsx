@@ -24,8 +24,8 @@ function Navbar() {
     <div >
        <nav className="fixed bottom-2 left-2 w-full">
 
-      <button onClick={togglePlay}>
-        {isPlaying ? <IoPauseCircleOutline className="text-[30px] iconMusic" /> : <FaRegCirclePlay className="text-[30px]  iconMusic"  />}
+      <button onClick={togglePlay} className="bg-white rounded-full shadow-lg">
+        {isPlaying ? <IoPauseCircleOutline className="text-[30px] iconMusic text-gray-400" /> : <FaRegCirclePlay className="text-[30px]  iconMusic text-gray-400"  />}
       </button>
        </nav>
     </div>

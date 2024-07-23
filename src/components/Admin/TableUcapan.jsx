@@ -5,36 +5,26 @@ import GlobalApi from "../../lib/GlobalApi";
 import { CiEdit } from "react-icons/ci";
 import { MdDeleteOutline } from "react-icons/md";
 import Sidebar from "./Sidebar";
-function TableReservasi() {
-  const [reservasiData, setReservasiData] = useState([]);
-  
+
+function TableUcapan() {
+  const [UcapanData, setUcapanData] = useState([]);
 
   useEffect(() => {
-    getReservasi();
+    getUcapan();
   }, []);
 
-  const getReservasi = async () => {
-    await GlobalApi.getReservasi().then((res) => {
-      setReservasiData(res.data.data.data);
-      console.log(res.data.data);
+  const getUcapan = async () => {
+    await GlobalApi.getUcapans().then((res) => {
+      setUcapanData(res.data.data.data);
+      console.log(res.data.data.data);
     });
   };
 
-  // useEffect(() => {
-  //   fetch(`http://localhost:8000/api/reservasis?page=${currentPage}`)
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       setReservasiData(data.data);
-  //       setNextPage(data.next_page_url);
-  //       setPreviousPage(data.prev_page_url);
-  //     });
-  // }, [currentPage]);
-
   const handleDelete = async (id) => {
     try {
-      await GlobalApi.deleteReservasi(id);
+      await GlobalApi.deleteUcapan(id);
       alert("delete data succesfully");
-      setReservasiData(reservasiData.filter((item) => item.id !== id));
+      setUcapanData(UcapanData.filter((item) => item.id !== id));
     } catch (error) {
       console.log(error);
     }
@@ -42,33 +32,29 @@ function TableReservasi() {
 
   return (
     <>
-      <Sidebar />
+    <Sidebar />
       <div className="h-screen items-center text-center  py-4 ">
         <table className="w-[80%] md:w-[50%] border-collapse border  border-slate-400 mx-auto">
           <thead className="">
             <tr>
               <th className="border border-slate-300 ">No</th>
               <th className="border border-slate-300 ">Name</th>
-              <th className="border border-slate-300">Jumlah</th>
-              <th className="border border-slate-300">Status</th>
+              <th className="border border-slate-300">Ucapan</th>
+             
               <th className="border border-slate-300">Action</th>
             </tr>
           </thead>
 
-          {reservasiData.map((data, index) => (
-    
-              <tbody key={index}>
+          {UcapanData.map((data, index) => (
+            <tbody key={index}>
               <tr className="border border-slate-300">
                 <td className="border border-slate-300">{index + 1}</td>
                 <td className="border border-slate-300">{data.name}</td>
-                <td className="border border-slate-300">
-                  {data.jumlah} Orang
-                </td>
-                <td className="border border-slate-300">{data.status}</td>
+                <td className="border border-slate-300">{data.ucapan}</td>
                 <td className="border border-slate-300">
                   <div className="grid grid-cols-2 content-center justify-items-center mx-auto  ">
                     <div className="">
-                      <Link to={`/edit/${data.id}`}>
+                      <Link to={`/ucapan/edit/${data.id}`}>
                         <CiEdit className=" text-[24px] " />
                       </Link>
                     </div>
@@ -82,13 +68,11 @@ function TableReservasi() {
                 </td>
               </tr>
             </tbody>
-            
           ))}
-          
         </table>
       </div>
     </>
   );
 }
 
-export default TableReservasi;
+export default TableUcapan;

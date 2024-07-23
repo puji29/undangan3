@@ -3,20 +3,20 @@ import {  useNavigate, useParams } from "react-router-dom";
 import GlobalApi from "../../lib/GlobalApi";
 import Sidebar from "./Sidebar";
 
-function FormEditRsvp() {
+function FormEditUcapan() {
   const { id } = useParams();
   const [data, setData] = useState({});
   const navigate = useNavigate()
 
   useEffect(() => {
-    findReservasiById(id);
+    findUcapanById(id);
   }, []);
 
-  const findReservasiById = async (id) => {
+  const findUcapanById = async (id) => {
     try {
-      const response = await GlobalApi.getReservasiById(id);
+      const response = await GlobalApi.getUcapanById(id);
       setData(response.data.data);
-      console.log(response.data.data.data);
+      console.log(response.data.data);
       
     } catch (error) {
       console.error("Error fetching data", error);
@@ -26,10 +26,10 @@ function FormEditRsvp() {
   const handleUpdate = async (e) => {
     e.preventDefault()
     try {
-      const response = await GlobalApi.updateReservasi(id,data);
-      console.log("data updated:", response.data.data.data);
+      const response = await GlobalApi.updateUcapan(id,data);
+      console.log("data updated:", response.data.data);
       alert('Data updated succesfullly')
-      navigate('/reservasi')
+      navigate('/ucapan')
     } catch (error) {
       console.error("Error updating data:", error);
     }
@@ -54,27 +54,17 @@ function FormEditRsvp() {
               />
             </div>
             <div className=" mr-7 ml-6 rounded-md py-1 px-3 ">
-              <label htmlFor="name">Jumlah:</label>
-              <br />
-              <input
-                type="number"
-                name="jumlah"
-                className="border rounded-md w-full py-2 px-3 outline-none"
-                value={data.jumlah}
-                onChange={(e) => setData({ ...data, jumlah: e.target.value })}
-              />
-            </div>
-            <div className=" mr-7 ml-6 rounded-md py-1 px-3 ">
-              <label htmlFor="name">Status:</label>
+              <label htmlFor="ucapan">Ucapan:</label>
               <br />
               <input
                 type="text"
-                name="status"
+                name="ucapan"
                 className="border rounded-md w-full py-2 px-3 outline-none"
-                value={data.status}
-                onChange={(e) => setData({ ...data, status: e.target.value })}
+                value={data.ucapan}
+                onChange={(e) => setData({ ...data, ucapan: e.target.value })}
               />
             </div>
+            
             <div className="flex">
               <button className="mx-auto bg-blue-600 rounded-lg py-2 px-2 ">
                 Update
@@ -87,4 +77,4 @@ function FormEditRsvp() {
   );
 }
 
-export default FormEditRsvp;
+export default FormEditUcapan;

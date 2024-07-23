@@ -42,7 +42,7 @@ function Rsvp() {
 
   return (
     <div className="max-h-screen mx-auto content-center text-center py-4 ">
-      <h1 className="text-[25px] py-2">Informasi Acara</h1>
+      <h1 className="text-[25px] py-2 mt-5">Informasi Acara</h1>
       <div className="rounded-lg shadow-lg bg-gray-400 mr-2 ml-2">
         <div className="grid grid-cols-2">
           <div className="py-2 mt-2">

@@ -12,7 +12,7 @@ function Sidebar() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   return (
     <>
-      <nav className="bg-gray-900 py-5 px-5 ">
+      <nav className="bg-gray-900 py-5 px-5 sticky top-0 ">
         <div className="text-end">
           <span className="text-gray-100">icon</span>
           {/* <dropdown>
@@ -25,7 +25,7 @@ function Sidebar() {
 
       <span
         onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-        className="absolute text-white text-4xl top-5 left-4 cursor-pointer"
+        className=" absolute text-white text-4xl top-5 left-4 cursor-pointer"
       >
         <IoFilterSharp className="px-2 bg-gray-900 rounded-md" />
       </span>
@@ -57,14 +57,18 @@ function Sidebar() {
             className="text-[15px] ml-4 w-full bg-transparent focus:outline-none"
           />
         </div>
-        <div className="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white">
-          <BsCalendarCheckFill className="text-[15px] mr-3" />
-          <span><Link to={'/reservasi'}>Reservasi</Link></span>
-        </div>
-        <div className="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white">
-          <FaPenFancy className="text-[15px] mr-3" />
-          <span>Ucapan & Pesan</span>
-        </div>
+        <Link to={"/reservasi"}>
+          <div className="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white">
+            <BsCalendarCheckFill className="text-[15px] mr-3" />
+            <span>Reservasi</span>
+          </div>
+        </Link>
+        <Link to={"/ucapan"}>
+          <div className="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white">
+            <FaPenFancy className="text-[15px] mr-3" />
+            <span>Ucapan & Pesan</span>
+          </div>
+        </Link>
         <div className="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white">
           <IoLogOutOutline className="text-[22px] mr-3" />
           <span>Logout</span>
