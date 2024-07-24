@@ -9,6 +9,7 @@ import TableReservasi from "./components/Admin/TableReservasi";
 
 import TableUcapan from "./components/Admin/TableUcapan";
 import FormEditUcapan from "./components/Admin/FormEditUcapan";
+import Login from "./components/Admin/Login";
 
 function App() {
   useEffect(() => {
@@ -36,6 +37,7 @@ function App() {
           <Route path="/reservasi" Component={TableReservasi} />
           <Route path="/ucapan" Component={TableUcapan} />
           <Route path="/ucapan/edit/:id" Component={FormEditUcapan} />
+          <Route path="/login" Component={Login} />
         </Routes>
       </Router>
     </>

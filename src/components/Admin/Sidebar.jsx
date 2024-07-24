@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { IoMdClose } from "react-icons/io";
 import { AiFillDashboard } from "react-icons/ai";
 import { IoSearch } from "react-icons/io5";
@@ -7,9 +7,23 @@ import { FaPenFancy } from "react-icons/fa";
 import { IoLogOutOutline } from "react-icons/io5";
 import { IoFilterSharp } from "react-icons/io5";
 import { useState } from "react";
+import GlobalApi from "../../lib/GlobalApi";
 
 function Sidebar() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const token = localStorage.getItem("token")
+  const navigate = useNavigate()
+
+  const logout = async()=>{
+    try {
+      await GlobalApi.logout(token)
+      alert('Logout succesfully')
+      navigate('/login')
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <>
       <nav className="bg-gray-900 py-5 px-5 sticky top-0 ">
@@ -71,7 +85,7 @@ function Sidebar() {
         </Link>
         <div className="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white">
           <IoLogOutOutline className="text-[22px] mr-3" />
-          <span>Logout</span>
+          <span onClick={()=> logout()}>Logout</span>
         </div>
       </div>
     </>

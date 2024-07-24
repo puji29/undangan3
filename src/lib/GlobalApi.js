@@ -26,6 +26,15 @@ const updateUcapan = (id,data)=> axiosClient.put('/ucapans/'+id,data)
 
 const deleteUcapan = (id)=> axiosClient.delete('/ucapans/'+id)
 
+const getXsrf = () => axiosClient.get('/sanctum/csrf-cookie');
+
+const login = (data) => axiosClient.post('/login',data)
+
+const logout = (token)=> axiosClient.get('/logout',{
+    headers:{
+        Authorization: "Bearer " + token,
+    }
+})
 export default{
     getReservasi,
     addReservasi,
@@ -37,5 +46,8 @@ export default{
     deleteReservasi,
     getUcapanById,
     updateUcapan,
-    deleteUcapan
+    deleteUcapan,
+    getXsrf,
+    login,
+    logout
 }
